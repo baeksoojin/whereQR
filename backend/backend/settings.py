@@ -53,7 +53,17 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+    'Account',
+    'phonenumber_field',
+    
 ]
+
+RESTFRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
