@@ -9,17 +9,18 @@ from . import models
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
+# {"name" : "nana", "password" : "pw"}
+
 class SignupView(APIView):
     def post(self, request):
         user = User.objects.create_user(
             username=request.data['name'],
             password=request.data['password'])
-        # {"name" : "nana", "password" : "pw"}
         profile = models.Profile(user=user)
 
         user.save()
         profile.save()
-        return Response({"name": request.dta['name']})
+        return Response({"name": request.data['name']})
 
 class LoginView(APIView):
     def post(self, request):
@@ -47,11 +48,12 @@ class UserView(APIView):
         return Response({"token":token.key})
 
 class LogoutView(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
     def post(self, request):
-        user = authenticate(username=request.data['name'], password=request.data['password'])
-        if user is not None:
-            token = Token.objects.get(user=user)
-            token.delete()
-            return Response({"Token": token.key})
-        else:
-            return Response(status=401)
+        
+        token = Token.objects.get(user=request.user)
+        token.delete()
+        return Response({"Token": "null"})
+       
