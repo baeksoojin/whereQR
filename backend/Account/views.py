@@ -14,27 +14,28 @@ from rest_framework.permissions import IsAuthenticated
 class SignupView(APIView):
     def post(self, request):
         user = User.objects.create_user(
-            username=request.data['name'],
+            username=request.data['email'],
             password=request.data['password'])
         profile = models.Profile(user=user)
 
         user.save()
         profile.save()
-        return Response({"name": request.data['name']})
+        return Response({"email": request.data['email']})
 
 class LoginView(APIView):
     def post(self, request):
         user = authenticate(username=request.data['name'], password=request.data['password'])
+
         if user is not None:
             token = Token.objects.create(user=user)
             return Response({
                 "message": "login : success",
-                "Token": token.key})
+                "token": token.key})
         else:
             return Response(status=401)
 
 
-class UserView(APIView):
+class TokenView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
