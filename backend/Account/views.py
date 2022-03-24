@@ -2,13 +2,12 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from django.contrib.auth import authenticate
 from . import models
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-# {"name" : "nana", "password" : "pw"}
+#  {"email" : "email3@naver.com", "password" : "pw","nickname":"nickname3","address" : "address","phonenumber":"82010111111"}
 
 class SignupView(APIView):
     def post(self, request):

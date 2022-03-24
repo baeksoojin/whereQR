@@ -1,4 +1,5 @@
 from pdb import runcall
+import phonenumbers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -13,6 +14,8 @@ from datetime import datetime
 import re
 
 # Create your views here.
+
+#사용자가 구매한 QR코드 스티커의 제공형태
 class QRmakeView(APIView):
     def post(self, request):
 
@@ -35,8 +38,9 @@ class QRmakeView(APIView):
         
         qrcode_o.save()
 
-        return Response({"qrcode":"makeQR"})
+        return Response({"qrcode":"makeQR","key":key})
 
+#사용자는 웹앱을 통해 qrcode에 적힌 key코드로 해당 큐얼코드에 로그인후 데이터 등록
 class QRsaveView(APIView):
 
     authentication_classes = [TokenAuthentication]
@@ -57,4 +61,31 @@ class QRsaveView(APIView):
 
         return Response({"message":"save"})
 
-# {"qr_url":"url","text":"text"}
+# {"key":"20220325031516263584","text":"text"}
+
+# 사용자가 qrcode scan -> qrcode에 들어있던 key값을 활용해 qrcode data를 보여줌.
+class QRdataView(APIView):
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+
+        qrcode = models.QRcode.objects.get(key = request.data['key'])
+        
+        
+        memo = qrcode.text
+        address = qrcode.profile.address
+        print(type(qrcode.profile.PhoneNumber)) # <class 'phonenumber_field.phonenumber.PhoneNumber'> => to string!
+        phonenumber = str(qrcode.profile.PhoneNumber)
+
+        data = {
+            "memo" : memo,
+            "address" : address,
+            "phonenumber" : phonenumber }
+
+        return Response(data)
+
+
+
+
