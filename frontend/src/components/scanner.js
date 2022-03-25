@@ -1,33 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { QrReader } from 'react-qr-reader';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const BaseURL = 'http://127.0.0.1:8000/qrcode/';
-
-const axiosInstance= axios.create({
-	baseURL: BaseURL,
-	timeout: 5000,
-	headers: {
-		'Authorization': "Token",
-        'Content-Type': 'application/json',
-        'accept': 'application/json'
-	}, 
-});
 
 const QRScan = () => {
+
+  let navigate = useNavigate();
   const [data, setData] = useState('No result');
-
-  const getData = () => {
-
-    axiosInstance.defaults.headers['Authorization'] = "Token " + "39d2e073a8652eec1a9107796de801e4327b23e3";
-    axiosInstance.get('data/',{params: {"key" : "20220325052842365766"}})
-      .then((response) => {console.log(response);})
-    
+  
+  const getData = (data) => {
+    if(data!='No result'){
+      console.log(data);
+      navigate(`/scan/${data}`);
+    } 
   }
 
   useEffect(()=>{ 
     console.log('값이 바뀜');
-    getData();
+    getData(data);
   },[data]);
    
 

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signin from "./components/signin";
 import Signup from "./components/signup";
 import QRScan from "./components/scanner";
+import Detail from "./components/Detail";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
           <Route path="/Signin" element={<Signin />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/Scan" element={<QRScan />} />
+          <Route path="/Scan/:ID" element={<Detail />} />
+
          
         </Routes>
       </BrowserRouter>

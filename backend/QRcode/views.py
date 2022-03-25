@@ -66,9 +66,6 @@ class QRsaveView(APIView):
 # 사용자가 qrcode scan -> qrcode에 들어있던 key값을 활용해 qrcode data를 보여줌.
 class QRdataView(APIView):
 
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
     def get(self, request):
 
         key = request.GET['key'] #parameter를 받을 때, request.GET 사용.
