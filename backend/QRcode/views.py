@@ -5,13 +5,13 @@ from rest_framework.response import Response
 
 from . import models
 from Account.models import Profile
-
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 import qrcode
 from datetime import datetime
 import re
+
 
 # Create your views here.
 
@@ -28,7 +28,7 @@ class QRmakeView(APIView):
 
         key = str(datetime.now())
         key = re.sub(r'[^0-9]', '', key)
-        qrcode_.add_data('qrdataview/'+key)
+        qrcode_.add_data(key)
         qrcode_o.key = key
 
         img = qrcode_.make_image()
@@ -71,12 +71,12 @@ class QRdataView(APIView):
 
     def get(self, request):
 
-        qrcode = models.QRcode.objects.get(key = request.data['key'])
+        key = request.GET['key'] #parameter를 받을 때, request.GET 사용.
         
-        
+        qrcode = models.QRcode.objects.get(key = key)
+
         memo = qrcode.text
         address = qrcode.profile.address
-        print(type(qrcode.profile.PhoneNumber)) # <class 'phonenumber_field.phonenumber.PhoneNumber'> => to string!
         phonenumber = str(qrcode.profile.PhoneNumber)
 
         data = {
