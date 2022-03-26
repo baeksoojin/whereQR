@@ -33,9 +33,9 @@ const SaveQR = () => {
             key: key,
             text: memo
         };
-        if(1){//로그인을 안 했다면, 로그인이 필요한 페이지라고 경고.
-            //axiosInstance.defaults.headers['Authorization'] = "Token " + localStorage.getItem('token');
-            axiosInstance.defaults.headers['Authorization'] = "Token " + "298f81e8c6fb9c23135719c330ee7e456d1496a4";
+        if(localStorage.getItem('token')){//로그인을 안 했다면, 로그인이 필요한 페이지라고 경고.
+            let token = localStorage.getItem('token');
+            axiosInstance.defaults.headers['Authorization'] = "Token " + token;
             axiosInstance.post('saveQR/',data); 
         }
         else{
@@ -52,6 +52,7 @@ const SaveQR = () => {
             <div style={{marginTop:10}}>
                 <button className = "button" type="primary" onClick={onSubmit}>등록하기</button>
             </div>
+            <p>주소와 전화번호는 회원가입시 등록했던 정보로 표시됩니다.</p>
         </div>
         
         

@@ -7,6 +7,7 @@ const Signup = () => {
 
     let navigate = useNavigate();
 
+    const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [name,setName] = useState('');
     const [address,setAddress] = useState('');
@@ -22,6 +23,7 @@ const Signup = () => {
         }
 
         console.log({
+            email,
             password,
             name,
             address,
@@ -29,10 +31,11 @@ const Signup = () => {
         });
 
         const user_data = {
+            email: email,
             nickname: name,
             password: password,
             address: address,
-            phonenum: phonenum,
+            phonenumber: phonenum,
         };
 
         axios.post('http://127.0.0.1:8000/user/signup/',user_data).then(
@@ -40,6 +43,9 @@ const Signup = () => {
         );
     }
 
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value);
+    };
     const onChangeName = (e) => {
         setName(e.target.value);
     };
@@ -61,8 +67,12 @@ const Signup = () => {
     return (
     <div className="signup">
             <div>
+                <label className="label">이메일</label><br/>
+                <input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
+            </div><br/>
+            <div>
                 <label className="label">닉네임</label><br/>
-                <input className="user" name="user-id" value={name} required onChange={onChangeName} />
+                <input className="user" name="user-nick" value={name} required onChange={onChangeName} />
             </div><br/>
             <div>
                 <label className="label">비밀번호</label><br/>

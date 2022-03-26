@@ -26,14 +26,14 @@ const Signin = () => {
         navigate(`/Signup`);
     }
     
-    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
     const Login = (e) => {
         e.preventDefault();
      
         const user_data = {
-            name: name,
+            email: email,
             password: password,
         };
 
@@ -48,7 +48,7 @@ const Signin = () => {
 
 
     const onChangeEmail = (e) => {
-        setName(e.target.value);
+        setEmail(e.target.value);
     };
     const onChangePassword = (e) => {
         setPassword(e.target.value);
@@ -57,11 +57,11 @@ const Signin = () => {
     return (
     <div className="signin">
         <div>
-            <label className="label" >name</label><br/>
-            <input className="user" name="user-id" value={name} required onChange={onChangeEmail} />
+            <label className="label" >이메일</label><br/>
+            <input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
         </div><br/>
         <div>
-            <label className="label" >password</label><br/>
+            <label className="label" >비밀번호</label><br/>
             <input className="user" name="user-password" type="password" value={password} required onChange={onChangePassword} />
         </div><br/>
         
