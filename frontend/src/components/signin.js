@@ -40,6 +40,7 @@ const Signin = () => {
         axiosInstance.post('login/',user_data).then((res)=>{
             const token = res.data.token;
             axiosInstance.defaults.headers['Authorization'] = "Token " + token;
+            localStorage.setItem('token',token); 
             console.log(token);
         });
         

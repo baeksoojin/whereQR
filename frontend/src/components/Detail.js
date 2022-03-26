@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Detail = () => {
 
+    let navigate = useNavigate();
     let key = useParams().ID;
     console.log(key);
 
@@ -11,13 +12,26 @@ const Detail = () => {
     const [memo, setMemo] = useState('No result');
     const [phonenum, setPhonenum] = useState('No result');
 
+    const saveQR = (key) => {
+        navigate(`/saveQR/${key}`);
+    }
+
     useEffect(()=>{ 
         axios.get('http://127.0.0.1:8000/qrcode/data/',{params: {"key" : key}})
         .then((response) => {
+
             console.log(response);
-            setAdd(response.data['address']);
-            setMemo(response.data['memo']);
-            setPhonenum(response.data['phonenumber']);
+            
+            if(Number(response.data['is_null'])===0){
+                console.log('here');
+                setAdd(response.data['address']);
+                setMemo(response.data['memo']);
+                setPhonenum(response.data['phonenumber']);
+            }
+            else{
+                saveQR(key);
+            }
+            
         })
       },[memo]); 
 

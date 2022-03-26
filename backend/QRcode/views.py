@@ -72,14 +72,24 @@ class QRdataView(APIView):
         
         qrcode = models.QRcode.objects.get(key = key)
 
+        is_null = qrcode.is_null
         memo = qrcode.text
-        address = qrcode.profile.address
-        phonenumber = str(qrcode.profile.PhoneNumber)
-
-        data = {
+        if(qrcode.profile):
+            address = qrcode.profile.address
+            phonenumber = str(qrcode.profile.PhoneNumber)
+            data = {
+            "is_null" : is_null,
             "memo" : memo,
             "address" : address,
-            "phonenumber" : phonenumber }
+            "phonenumber" : phonenumber  }
+        else:
+            data = {
+            "is_null" : is_null,
+            "memo" : memo, }
+
+        
+
+        
 
         return Response(data)
 
