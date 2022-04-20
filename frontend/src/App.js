@@ -3,9 +3,9 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signin from "./components/Account/signin";
 import Signup from "./components/Account/signup";
-import QRScan from "./components/scanner";
-import Detail from "./components/Detail";
-import SaveQR from "./components/saveQR";
+import QRScan from "./components/QRcode/scanner";
+import Detail from "./components/QRcode/DetailQR";
+import SaveQR from "./components/QRcode/modifyQR";
 import Navbar from "./components/Navbar/index";
 import Homepage from "./components/main";
 
