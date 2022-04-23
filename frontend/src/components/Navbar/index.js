@@ -14,7 +14,7 @@ const Navbar = () => {
     return(
         <Nav>
             <NavLink to = "/">
-                <h1>logo</h1>
+                <h1>whereQR</h1>
             </NavLink>
             <Bars />
             <NavMenu>
@@ -23,6 +23,9 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink to = '/Scan' activeStyle>
                     Scan
+                </NavLink>
+                <NavLink to = '/UserQr' activeStyle>
+                    Mine
                 </NavLink>
             </NavMenu>
             <NavBtn>

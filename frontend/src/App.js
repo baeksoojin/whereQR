@@ -8,6 +8,7 @@ import Detail from "./components/QRcode/DetailQR";
 import SaveQR from "./components/QRcode/modifyQR";
 import Navbar from "./components/Navbar/index";
 import Homepage from "./components/main";
+import UserQr from "./components/QRcode/UserQr";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/Scan" element={<QRScan />} />
               <Route path="/Scan/:ID" element={<Detail />} />
               <Route path="/SaveQR/:ID" element={<SaveQR />} />
+              <Route path="/UserQr" element={<UserQr />} />
             </Routes>
       </BrowserRouter>
   );

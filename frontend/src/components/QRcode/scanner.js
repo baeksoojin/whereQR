@@ -13,7 +13,7 @@ const QRScan = () => {
     if(data!='No result'){
       console.log(data);
       navigate(`/scan/${data}`);
-    } 
+    }
   }
 
   useEffect(()=>{ 

@@ -13,7 +13,7 @@ const Detail = () => {
     const [phonenum, setPhonenum] = useState('No result');
 
     const saveQR = (key) => {
-        navigate(`/saveQR/${key}`);
+        navigate(`/SaveQR/${key}`);
     }
 
     useEffect(()=>{ 
@@ -29,6 +29,7 @@ const Detail = () => {
                 setPhonenum(response.data['phonenumber']);
             }
             else{
+                console.log("등록된 정보가 없습니다.");
                 saveQR(key);
             }
             
