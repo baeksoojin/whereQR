@@ -12,6 +12,12 @@ import qrcode
 from datetime import datetime
 import re
 
+from PIL import Image
+import base64
+import io
+
+from .serializers import QrSerializer
+
 
 # Create your views here.
 
@@ -34,6 +40,7 @@ class QRmakeView(APIView):
         img = qrcode_.make_image()
         qrlink = "static/qrcode"+key+".png"
         img.save(qrlink)
+        # qrcode_o.qr_img = Image.open(qrlink)
         qrcode_o.qr_url = qrlink
         
         qrcode_o.save()
@@ -51,8 +58,10 @@ class QRsaveView(APIView):
         print(request.data)
 
         qrcode =  models.QRcode.objects.get(key = request.data['key'])
+        # qrcode를 scan하면 key가 읽히고 qrsave api를 사용하여 key를 가지고 qrcode를 찾아서 데이터를 수정 후 저장.
         
         qrcode.is_null = False
+        # 사용자가 정해지게 됨.
         qrcode.text = request.data['text']
 
         profile = Profile.objects.get(user = request.user)
@@ -93,6 +102,19 @@ class QRdataView(APIView):
 
         return Response(data)
 
+# 로그인한 user가 가지고 있는 qrcode에 대한 정보들을 보여주는 페아지를 위한 api생성
+class UserQrView(APIView):
+    
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
+    def get(self, request):
+
+        profile = Profile.objects.get(user = request.user)
+        qrcode = models.QRcode.objects.filter(profile = profile)
+            
+        serializer = QrSerializer(qrcode, many=True)
+
+        return Response(serializer.data)
 
 

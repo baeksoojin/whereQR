@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 
 from Account.models import Profile
@@ -10,4 +11,5 @@ class QRcode(models.Model):
     qr_url = models.TextField(max_length=255)
     text = models.TextField(null = True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    qr_img = models.ImageField(upload_to = "qrcode/images", null = True)
 
