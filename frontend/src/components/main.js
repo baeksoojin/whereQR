@@ -1,11 +1,13 @@
 import React from "react";
+import {Title, Div} from "./MainElements";
 
 const Homepage = () => {
 
     return(
-        <div>
-            <p>home</p>
-        </div>
+        <Div>
+            <Title>No more worrying about losing yours!  </Title>
+        </Div>
+        
 
     )
 }
