@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import {Div, Label , SDiv, Input, Button} from "./AccountElements.js";
 
 const Signup = () => {
 
@@ -65,37 +65,25 @@ const Signup = () => {
     };
 
     return (
-    <div className="signup">
-            <div>
-                <label className="label">이메일</label><br/>
-                <input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
-            </div><br/>
-            <div>
-                <label className="label">닉네임</label><br/>
-                <input className="user" name="user-nick" value={name} required onChange={onChangeName} />
-            </div><br/>
-            <div>
-                <label className="label">비밀번호</label><br/>
-                <input className="user"  name="user-password" type="password" value={password} required onChange={onChangePassword} />
-            </div><br/>
-            <div>
-                <label className="label">주소</label><br/>
-                <input className="user"  name="user-address" value={address} required onChange={onChangeAddress} />
-            </div><br/>
-            <div>
-                <label className="label">연락처</label><br/>
-                <input className="user"  name="user-phonenum" value={phonenum} required onChange={onChangePhonenum} />
-            </div><br/>
-            <div>
-                <label className="label">password check</label><br/>
-                <input className="user"  name="user-password-check" type="password" value={passwordCheck} required onChange={onChangePasswordChk} />
+    <SDiv className="signup">
+            <Div>
+                <Label className="label">이메일</Label>
+                <Input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
+                <Label className="label">닉네임</Label>
+                <Input className="user" name="user-nick" value={name} required onChange={onChangeName} />
+                <Label className="label">비밀번호</Label>
+                <Input className="user"  name="user-password" type="password" value={password} required onChange={onChangePassword} />
+                <Label className="label">주소</Label>
+                <Input className="user"  name="user-address" value={address} required onChange={onChangeAddress} />
+                <Label className="label">연락처</Label>
+                <Input className="user"  name="user-phonenum" value={phonenum} required onChange={onChangePhonenum} />
+                <Label className="label">password check</Label>
+                <Input className="user"  name="user-password-check" type="password" value={passwordCheck} required onChange={onChangePasswordChk} />
                 {passwordError && <div style={{color : 'red'}}>비밀번호가 일치하지 않습니다.</div>}
-            </div><br/><br/>
-            <div style={{marginTop:10}}>
-                <button className = "button" type="primary" onClick={onSubmit}>가입하기</button>
-             </div><br/><br/>
+                <Button className = "button" type="primary" onClick={onSubmit}>가입하기</Button>
+            </Div>
 
-        </div>
+        </SDiv>
 
     
     );

@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import {Div2, Label , SDiv, Input, Button} from "./AccountElements.js";
 axios.defaults.withCredentials = true;
 
 const BaseURL = 'http://127.0.0.1:8000/user/';
@@ -55,22 +56,19 @@ const Signin = () => {
     };
 
     return (
-    <div className="signin">
-        <div>
-            <label className="label" >이메일</label><br/>
-            <input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
-        </div><br/>
-        <div>
-            <label className="label" >비밀번호</label><br/>
-            <input className="user" name="user-password" type="password" value={password} required onChange={onChangePassword} />
-        </div><br/>
-        
-        <div style={{marginTop:10}}>
-            <button className="button" type="primary" onClick={Login}>로그인하기</button>
-            <button className="button" type="primary" onClick={Homepage}>홈으로</button>
-            <button className="button" type="primary" onClick={Signup}>회원가입</button>
-        </div>
-    </div>
+    <SDiv className="signin">
+        <Div2>
+            <Label className="label" >이메일</Label>
+            <Input className="user" name="user-id" value={email} required onChange={onChangeEmail} /><br/>
+            <Label className="label" >비밀번호</Label>
+            <Input className="user" name="user-password" type="password" value={password} required onChange={onChangePassword} /><br/>
+            <div>
+            <Button className="button" type="primary" onClick={Login}>로그인하기</Button>
+            <Button className="button" type="primary" onClick={Homepage}>홈으로</Button>
+            <Button className="button" type="primary" onClick={Signup}>회원가입</Button>
+            </div>
+        </Div2>
+    </SDiv>
     );
     
 
