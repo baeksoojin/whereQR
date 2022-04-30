@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
+import {QDiv, Label , Div, Input, Button,P} from "./QRcodeElements";
+
 const BaseURL = 'http://127.0.0.1:8000/qrcode/';
 
 const axiosInstance= axios.create({
@@ -34,6 +36,7 @@ const UserQr = () => {
             console.log(token);
             axiosInstance.defaults.headers['Authorization'] = "Token " + token;
             const response = await axiosInstance.get('/userqr');
+            
             setQrs(response.data); 
             console.log(response.data);
         } catch (e) {
@@ -59,13 +62,17 @@ const UserQr = () => {
     }
 
     return(
-        <div>
-            <div>
+        <QDiv>
+            <Div>
                 {qrs.map(qr => (
-                    <button key={qr.id} onClick={()=>{Detail(qr.key)}}> qr={qr.key} </button>
+                    <div>
+                        {/* <P>{qr.count}번째 qr코드</P> */}
+                        <Button key={qr.id} onClick={()=>{Detail(qr.key)}}>{qr.title} </Button>
+                    </div>
+                    
                 ))}
-            </div> 
-        </div>
+            </Div> 
+        </QDiv>
         
 
     )

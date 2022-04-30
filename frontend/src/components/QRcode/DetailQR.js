@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
+import {QDiv, Label , Div, Input, Button,P,TH,TD} from "./QRcodeElements";
 
 const Detail = () => {
 
@@ -11,6 +12,7 @@ const Detail = () => {
     const [address, setAdd] = useState('No result');
     const [memo, setMemo] = useState('No result');
     const [phonenum, setPhonenum] = useState('No result');
+    const [title, setTitle] = useState('No result');
 
     const saveQR = (key) => {
         navigate(`/SaveQR/${key}`);
@@ -23,7 +25,7 @@ const Detail = () => {
             console.log(response);
             
             if(Number(response.data['is_null'])===0){
-                console.log('here');
+                setTitle(response.data['title']);
                 setAdd(response.data['address']);
                 setMemo(response.data['memo']);
                 setPhonenum(response.data['phonenumber']);
@@ -37,11 +39,28 @@ const Detail = () => {
       },[memo]); 
 
     return(
-        <div>
-            <p>{address}</p>
-            <p>{memo}</p>
-            <p>{phonenum}</p>
-        </div>
+        <QDiv>
+            <tbody>
+                <tr>
+                    <TH>제목</TH>
+                    <TD>{title}</TD>
+                </tr>
+                <tr>
+                    <TH>메모</TH>
+                    <TD>{memo}</TD>
+                </tr>
+                <tr>
+                    <TH>주소</TH>
+                    <TD>{address}</TD>
+                </tr>
+                <tr>
+                    <TH>연락처</TH>
+                    <TD>{phonenum}</TD>
+                </tr>
+            </tbody>
+            
+            
+        </QDiv>
 
     )
 }
