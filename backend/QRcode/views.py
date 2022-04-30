@@ -63,6 +63,7 @@ class QRsaveView(APIView):
         qrcode.is_null = False
         # 사용자가 정해지게 됨.
         qrcode.text = request.data['text']
+        qrcode.title = request.data['title']
 
         profile = Profile.objects.get(user = request.user)
         qrcode.profile = profile
@@ -84,10 +85,12 @@ class QRdataView(APIView):
         is_null = qrcode.is_null
         memo = qrcode.text
         if(qrcode.profile):
+            title = qrcode.title
             address = qrcode.profile.address
             phonenumber = str(qrcode.profile.PhoneNumber)
             data = {
             "is_null" : is_null,
+            "title" : title,
             "memo" : memo,
             "address" : address,
             "phonenumber" : phonenumber  }
@@ -112,7 +115,10 @@ class UserQrView(APIView):
 
         profile = Profile.objects.get(user = request.user)
         qrcode = models.QRcode.objects.filter(profile = profile)
-            
+
+        for i in range(0,len(qrcode)):
+            qrcode[i].count = str(i+1)
+
         serializer = QrSerializer(qrcode, many=True)
 
         return Response(serializer.data)

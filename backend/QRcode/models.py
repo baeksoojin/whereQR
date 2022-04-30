@@ -12,4 +12,4 @@ class QRcode(models.Model):
     text = models.TextField(null = True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     qr_img = models.ImageField(upload_to = "qrcode/images", null = True)
-
+    title = models.CharField(max_length=20,null=False)
