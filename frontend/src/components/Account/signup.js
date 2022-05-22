@@ -69,17 +69,17 @@ const Signup = () => {
             <Div>
                 <Label className="label">이메일</Label>
                 <Input className="user" name="user-id" value={email} required onChange={onChangeEmail} />
-                <Label className="label">닉네임</Label>
+                <Label className="label">이름</Label>
                 <Input className="user" name="user-nick" value={name} required onChange={onChangeName} />
                 <Label className="label">비밀번호</Label>
                 <Input className="user"  name="user-password" type="password" value={password} required onChange={onChangePassword} />
+                <Label className="label">비밀번호 재확인</Label>
+                <Input className="user"  name="user-password-check" type="password" value={passwordCheck} required onChange={onChangePasswordChk} />
+                {passwordError && <div style={{color : 'red'}}>비밀번호가 일치하지 않습니다.</div>}
                 <Label className="label">주소</Label>
                 <Input className="user"  name="user-address" value={address} required onChange={onChangeAddress} />
                 <Label className="label">연락처</Label>
                 <Input className="user"  name="user-phonenum" value={phonenum} required onChange={onChangePhonenum} />
-                <Label className="label">password check</Label>
-                <Input className="user"  name="user-password-check" type="password" value={passwordCheck} required onChange={onChangePasswordChk} />
-                {passwordError && <div style={{color : 'red'}}>비밀번호가 일치하지 않습니다.</div>}
                 <Button className = "button" type="primary" onClick={onSubmit}>가입하기</Button>
             </Div>
 

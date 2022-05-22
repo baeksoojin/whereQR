@@ -41,6 +41,9 @@ export const Bars = styled(FaBars)`
 `;
 
 export const NavMenu = styled.div`
+
+  font-size: 1rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   margin-right: -24px;
@@ -67,6 +70,9 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(Link)`
+
+  font-size: 1rem;
+  font-weight: 700;
   border-radius: 4px;
   background: #256ce1;
   padding: 10px 22px;
@@ -86,6 +92,8 @@ export const NavBtnLink = styled(Link)`
 `;
 
 export const Button = styled.button`
+    font-size: 1rem;
+    font-weight: 700;
     border-radius: 4px;
     background: #256ce1;
     padding: 10px 22px;

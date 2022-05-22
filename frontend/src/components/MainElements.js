@@ -4,12 +4,12 @@ export const Title = styled.p`
   font-size: 2.2rem;
   font-weight: 800;
   color: #15cdfc;
-  display: table; margin-top:300px; margin-left: auto; margin-right: auto;
+  display: table; margin-top:250px; margin-left: auto; margin-right: auto;
 
 `;
 
 export const Div = styled.div`
-
+    text-align: center;
     height: 700px;
     display: flex;
     justify-content: space-between;

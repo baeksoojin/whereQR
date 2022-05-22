@@ -4,9 +4,11 @@ import {Title, Div} from "./MainElements";
 const Homepage = () => {
 
     return(
-        <Div>
+        <div>
+            <Div>
             <Title>No more worrying about losing yours!  </Title>
-        </Div>
+            </Div>
+        </div>
         
 
     )

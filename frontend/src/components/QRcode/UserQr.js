@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
-import {QDiv, Label , Div, Input, Button,P} from "./QRcodeElements";
+import {QDiv , Div, A,Title,TD2} from "./QRcodeElements";
 
 const BaseURL = 'http://127.0.0.1:8000/qrcode/';
 
@@ -64,10 +64,11 @@ const UserQr = () => {
     return(
         <QDiv>
             <Div>
+                <Title> QR LIST</Title>
                 {qrs.map(qr => (
                     <div>
                         {/* <P>{qr.count}번째 qr코드</P> */}
-                        <Button key={qr.id} onClick={()=>{Detail(qr.key)}}>{qr.title} </Button>
+                        <TD2><A key={qr.id} onClick={()=>{Detail(qr.key)}}>{qr.title} </A></TD2>
                     </div>
                     
                 ))}

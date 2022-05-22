@@ -25,10 +25,14 @@ class SignupView(APIView):
 
 class LoginView(APIView):
     def post(self, request):
+        print(request.data['email'])
+        print(request.data['password'])
         user = models.User.objects.get(email=request.data['email'], password=request.data['password'])
+        print(user)
 
         if user is not None:
             token = Token.objects.create(user=user)
+            print(token)
             return Response({
                 "message": "login : success",
                 "token": token.key})

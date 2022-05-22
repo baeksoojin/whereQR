@@ -16,7 +16,7 @@ const QRScan = () => {
     }
   }
 
-  useEffect(()=>{ 
+  useEffect(()=>{
     console.log('값이 바뀜');
     getData(data);
   },[data]);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
-import {QDiv, Label , Div, Input, Button,P,TH,TD} from "./QRcodeElements";
+import {QDiv, Label , Div3, TH,TD} from "./QRcodeElements";
 
 const Detail = () => {
 
@@ -40,7 +40,7 @@ const Detail = () => {
 
     return(
         <QDiv>
-            <tbody>
+            <Div3>
                 <tr>
                     <TH>제목</TH>
                     <TD>{title}</TD>
@@ -57,7 +57,7 @@ const Detail = () => {
                     <TH>연락처</TH>
                     <TD>{phonenum}</TD>
                 </tr>
-            </tbody>
+            </Div3>
             
             
         </QDiv>

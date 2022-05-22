@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link as Link } from 'react-router-dom';
 
 export const Div = styled.div`
     
@@ -8,47 +7,60 @@ export const Div = styled.div`
     padding: 50px 15px;
     display: flex;
     justify-content: center;
+    text-align: enter;
     align-items: center;
     flex-direction: column;
-    background: #1795ac;
-    box-shadow: 0 10px 25px -10px rgba(0,0,0,0.5);
-    border-radius: 5px;
+    background: white;
+    color : black;
+    border-radius: 10px;
 
 `;
 
 export const Div2 = styled.div`
     
     width: 50%;
-    height: 70%;
+    height: 50%;
     padding: 50px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: column;
-    box-shadow: 70px 20px 80px 20px rgba(0,0,0,0.5);
-    border-radius: 5px;
+    border-radius: 10px;
+    background: white;
+
+`;
+
+export const Div3 = styled.div`
+    
+    width: 60%;
+    height: 50%;
+    padding: 50px 15px;
+    border-radius: 10px;
+    background: white;
 
 `;
 
 
 export const QDiv = styled.div`
+
     width: 100%;
     height: 100vh;
-    background:linear-gradient(to right top,black,#15cdfc);
+    // background:linear-gradient(to right top,white,#15cdfc);
+    background: #639CD9;
     box-sizing: border-box;
-    background-color : black;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 `;
 
 
 export const Label = styled.label`
     width : 70%;
-    color: #15cdfc;
+    color: black;
     border-radius: 8px;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     padding-left: 0.1rem;
     padding-right: 0.1rem;
     display: flex;
@@ -70,17 +82,40 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-    font-size: 1.2rem;
-    margin: 50px 50px 0px 10px;
-    background-color:transparent;
-    color: black;
-    outline: none;
+
+    background: #256ce1;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    width : 50%;
+    border: 1px solid #256ce1;
     border-radius: 8px;
-    border: none;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    display: inline-block;
+    z-index: 10;
+    margin-bottom: 3%;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #15cdfc;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+`;
+
+export const A = styled.a`
+    font-size: 1.4rem;
+    color: black;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
-    text-decoration: none;
-    box-shadow: 0px 15px 20px #156295;
+    &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #15cdfc;
+    font-size: 1.2rem;
+    font-weight: 700;
 
 `;
 export const P = styled.p`
@@ -94,17 +129,49 @@ export const P = styled.p`
     text-decoration: none;
 `;
 
-export const TD = styled.td`
-    width: 350px;
+export const Title = styled.p`
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #15cdfc;
+    display : flex;
+`;
+
+export const TD2 = styled.td`
+
+    font-size: 1.3rem;
+    font-weight: 500;
+    width: 50%;
     padding: 10px;
     vertical-align: top;
-    border-bottom: 1px solid;
+`;
+
+export const TD = styled.td`
+
+    margin-top : 1%;
+    width : 70%;
+    border: 1px solid;
+    border-radius: 8px;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    margin-bottom : 3%;
+    text-align: left;
 `;
 
 export const TH = styled.th`
-    color: black;
-    width: 150px;
-    padding: 15px;
-    font-weight: bold;
-    vertical-align: top;
+
+    width : 50%;
+    // color: #15cdfc;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    justify-content: space-between;
+    z-index: 10;
+
 `;

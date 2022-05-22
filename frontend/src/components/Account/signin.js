@@ -20,9 +20,6 @@ const Signin = () => {
 
     let navigate = useNavigate();
 
-    const Homepage = () => {
-        navigate(`/`);
-    };
     const Signup = () => {
         navigate(`/Signup`);
     }
@@ -43,6 +40,9 @@ const Signin = () => {
             axiosInstance.defaults.headers['Authorization'] = "Token " + token;
             localStorage.setItem('token',token); 
             console.log(token);
+            console.log(res.data);
+            navigate(`/`);
+
         });
         
     };
@@ -62,11 +62,8 @@ const Signin = () => {
             <Input className="user" name="user-id" value={email} required onChange={onChangeEmail} /><br/>
             <Label className="label" >비밀번호</Label>
             <Input className="user" name="user-password" type="password" value={password} required onChange={onChangePassword} /><br/>
-            <div>
-            <Button className="button" type="primary" onClick={Login}>로그인하기</Button>
-            <Button className="button" type="primary" onClick={Homepage}>홈으로</Button>
+            <Button className="button" type="primary" onClick={Login}>로그인</Button>
             <Button className="button" type="primary" onClick={Signup}>회원가입</Button>
-            </div>
         </Div2>
     </SDiv>
     );
