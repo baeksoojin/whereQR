@@ -5,7 +5,7 @@ import Signin from "./components/Account/signin";
 import Signup from "./components/Account/signup";
 import QRScan from "./components/QRcode/scanner";
 import Detail from "./components/QRcode/DetailQR";
-import SaveQR from "./components/QRcode/modifyQR";
+import SaveQR from "./components/QRcode/saveQR";
 import Navbar from "./components/Navbar/index";
 import Homepage from "./components/main";
 import UserQr from "./components/QRcode/UserQr";
