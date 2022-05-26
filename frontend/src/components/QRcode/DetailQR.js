@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
-import {QDiv, Button, Label , Div3, TH,TD} from "./QRcodeElements";
+import {QDiv, Button, Table , Div3, TH,TD} from "./QRcodeElements";
 
 const Detail = () => {
 
@@ -45,22 +45,25 @@ const Detail = () => {
     return(
         <QDiv>
             <Div3>
-                <tr>
-                    <TH>제목</TH>
-                    <TD>{title}</TD>
-                </tr>
-                <tr>
-                    <TH>메모</TH>
-                    <TD>{memo}</TD>
-                </tr>
-                <tr>
-                    <TH>주소</TH>
-                    <TD>{address}</TD>
-                </tr>
-                <tr>
-                    <TH>연락처</TH>
-                    <TD>{phonenum}</TD>
-                </tr>
+                <Table>
+                    <tr>
+                        <TH>제목</TH>
+                        <TD>{title}</TD>
+                    </tr>
+                    <tr>
+                        <TH>메모</TH>
+                        <TD>{memo}</TD>
+                    </tr>
+                    <tr>
+                        <TH>주소</TH>
+                        <TD>{address}</TD>
+                    </tr>
+                    <tr>
+                        <TH>연락처</TH>
+                        <TD>{phonenum}</TD>
+                    </tr>
+                </Table>
+                
                 <Button className = "button" type="primary" onClick={Modify}>수정하기</Button>
             </Div3>
             

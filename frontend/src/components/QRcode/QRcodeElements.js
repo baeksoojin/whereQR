@@ -83,11 +83,11 @@ export const Input = styled.input`
 
 export const Button = styled.button`
 
+    width : 90%;
     background: #256ce1;
     color: #fff;
     font-size: 1.4rem;
     font-weight: 700;
-    width : 50%;
     border: 1px solid #256ce1;
     border-radius: 8px;
     line-height: 2rem;
@@ -96,7 +96,8 @@ export const Button = styled.button`
     padding-right: 0.5rem;
     display: inline-block;
     z-index: 10;
-    margin-bottom: 3%;
+    margin-left : 5%;
+    margin-top: 10%;
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -148,7 +149,7 @@ export const TD2 = styled.td`
 export const TD = styled.td`
 
     margin-top : 1%;
-    width : 70%;
+    width : 90%;
     border: 1px solid;
     border-radius: 8px;
     line-height: 2rem;
@@ -164,7 +165,7 @@ export const TD = styled.td`
 
 export const TH = styled.th`
 
-    width : 50%;
+    width : 20%;
     // color: #15cdfc;
     border-radius: 8px;
     font-size: 1.4rem;
@@ -175,3 +176,11 @@ export const TH = styled.th`
     z-index: 10;
 
 `;
+
+export const Table = styled.table`
+    width : 99%;
+    margin : auto;
+    text-align :center;
+    justify-content: space-between;
+    z-index: 10;
+`
