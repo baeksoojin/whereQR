@@ -6,4 +6,5 @@ urlpatterns = [
     path('saveQR/',views.QRsaveView.as_view()),
     path('data/',views.QRdataView.as_view()),
     path('userqr/',views.UserQrView.as_view()),
+    path('modifyQR/',views.QRmodifyView.as_view()),
 ]

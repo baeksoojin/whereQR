@@ -70,8 +70,34 @@ class QRsaveView(APIView):
         qrcode.save()
 
         return Response({"message":"save"})
+        
+class QRmodifyView(APIView):
 
-# {"key":"20220325031516263584","text":"text"}
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+
+        print(request.data)
+
+        qrcode =  models.QRcode.objects.get(key = request.data['key'])
+        # qrcode를 scan하면 key가 읽히고 qrsave api를 사용하여 key를 가지고 qrcode를 찾아서 데이터를 수정 후 저장.
+        
+        qrcode.is_null = False
+        # 사용자가 정해지게 됨.
+        qrcode.text = request.data['text']
+        qrcode.title = request.data['title']
+
+        #프로필의 등록정보와 다르게 주소와 연락처를 세팅하고 싶을경우.
+        profile = Profile.objects.get(user = request.user)
+        if profile != request.data['address']:
+            qrcode.address = request.data['address']
+        if profile != request.data['phonenum']:
+            qrcode.PhoneNumber = request.data['phonenum']
+            
+        qrcode.save()
+
+        return Response({"message":"modify"})
 
 # 사용자가 qrcode scan -> qrcode에 들어있던 key값을 활용해 qrcode data를 보여줌.
 class QRdataView(APIView):
@@ -81,27 +107,36 @@ class QRdataView(APIView):
         key = request.GET['key'] #parameter를 받을 때, request.GET 사용.
         
         qrcode = models.QRcode.objects.get(key = key)
-
-        is_null = qrcode.is_null
-        memo = qrcode.text
         if(qrcode.profile):
+
+            is_null = qrcode.is_null
+            memo = qrcode.text
             title = qrcode.title
-            address = qrcode.profile.address
-            phonenumber = str(qrcode.profile.PhoneNumber)
+
+            #address를 회원가입 정보가 아닌 다른 정보로 입력한 경우, 그 값을 적용
+            if(qrcode.address == 'none'):
+                address = qrcode.profile.address
+                print("here")
+            else:
+                address = qrcode.address
+                print("here2")
+            #PhoneNumber를 회원가입 정보가 아닌 다른 정보로 입력한 경우, 그 값을 적용
+            if(qrcode.PhoneNumber == 'none'):
+                print("here")
+                phonenumber = str(qrcode.profile.PhoneNumber)
+            else: 
+                phonenumber = str(qrcode.PhoneNumber)
+                print("here2")
             data = {
             "is_null" : is_null,
             "title" : title,
             "memo" : memo,
             "address" : address,
-            "phonenumber" : phonenumber  }
+            "phonenumber" : phonenumber,  }
         else:
             data = {
             "is_null" : is_null,
             "memo" : memo, }
-
-        
-
-        
 
         return Response(data)
 

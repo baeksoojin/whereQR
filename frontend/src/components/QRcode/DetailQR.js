@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
-import {QDiv, Label , Div3, TH,TD} from "./QRcodeElements";
+import {QDiv, Button, Label , Div3, TH,TD} from "./QRcodeElements";
 
 const Detail = () => {
 
@@ -22,7 +22,7 @@ const Detail = () => {
         axios.get('http://127.0.0.1:8000/qrcode/data/',{params: {"key" : key}})
         .then((response) => {
 
-            console.log(response);
+            console.log("response" ,response);
             
             if(Number(response.data['is_null'])===0){
                 setTitle(response.data['title']);
@@ -36,7 +36,11 @@ const Detail = () => {
             }
             
         })
-      },[memo]); 
+      },[]); 
+
+      const Modify = () =>{
+        navigate(`/ModifyQR/${key}`);
+      }
 
     return(
         <QDiv>
@@ -57,6 +61,7 @@ const Detail = () => {
                     <TH>연락처</TH>
                     <TD>{phonenum}</TD>
                 </tr>
+                <Button className = "button" type="primary" onClick={Modify}>수정하기</Button>
             </Div3>
             
             

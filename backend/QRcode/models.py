@@ -1,5 +1,6 @@
 from distutils.command.upload import upload
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 from Account.models import Profile
 
@@ -13,3 +14,6 @@ class QRcode(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     qr_img = models.ImageField(upload_to = "qrcode/images", null = True)
     title = models.CharField(max_length=20,null=False)
+    address = models.CharField(max_length=255)
+    PhoneNumber = PhoneNumberField(null = True,blank = False)
+
