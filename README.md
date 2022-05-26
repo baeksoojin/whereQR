@@ -41,7 +41,13 @@ python manage.py migrate
 <img width="900" alt="스크린샷 2022-05-23 오전 3 32 56" src="https://user-images.githubusercontent.com/74058047/169710375-9e8b740f-acf1-4cae-bab5-7835908fa8da.png">
 
 ### 2-3. QRcode관리
+#### 관리자
+
+- qrcode 생성 api
+<img width="1476" alt="스크린샷 2022-05-27 오전 1 05 20" src="https://user-images.githubusercontent.com/74058047/170527942-7ce1b79b-11c7-43ee-8b5e-bda9c489f47a.png">
+
 #### 사용자
+
 - qrcode 등록하기 
 <img width="900" src="https://user-images.githubusercontent.com/74058047/169710009-85330a84-bcaa-4701-82c4-bfd2cb88ad2a.gif">
 
@@ -58,7 +64,22 @@ python manage.py migrate
 - user별 qrcode를 가져오는 api
 <img width="900" alt="스크린샷 2022-05-23 오전 2 57 20" src="https://user-images.githubusercontent.com/74058047/169709234-8cdf0eaa-abc7-4515-ace9-94f438f5ec61.png">
 
+- 수정
+
+- 수정전 table 확인
+<img width="1167" alt="스크린샷 2022-05-27 오전 12 55 06" src="https://user-images.githubusercontent.com/74058047/170526912-25a767c7-9adb-43f2-b747-25db45fc8acc.png">
+
+- qrcode 수정 api
+<img width="1186" alt="스크린샷 2022-05-27 오전 12 57 26" src="https://user-images.githubusercontent.com/74058047/170526924-3274a03b-0781-4b64-85d6-5ac54a01f1ed.png">
+
+- 수정후 table 확인
+<img width="1159" alt="스크린샷 2022-05-27 오전 12 57 51" src="https://user-images.githubusercontent.com/74058047/170526928-b623e689-873d-49da-8c21-2ba51ccd3545.png">
+
+- modify 페이지
+<img width="1512" alt="스크린샷 2022-05-27 오전 12 58 53" src="https://user-images.githubusercontent.com/74058047/170526942-759990cf-75ac-4619-9682-dfd9083c879f.png">
+
 #### 획득자
+
 - qrcode 스캔
 <img width="900" src="https://user-images.githubusercontent.com/74058047/169710043-b3513d73-45aa-47db-8829-a3cf817f4d9d.gif">
 
