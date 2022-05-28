@@ -109,12 +109,13 @@ class QRdataView(APIView):
         key = request.GET['key'] #parameter를 받을 때, request.GET 사용.
         
         qrcode = models.QRcode.objects.get(key = key)
-        if(qrcode.profile):
 
-            is_null = qrcode.is_null
-            memo = qrcode.text
-            title = qrcode.title
-            image = qrcode.qr_img
+        is_null = qrcode.is_null
+        memo = qrcode.text
+        title = qrcode.title
+        image = qrcode.qr_img
+
+        if(qrcode.profile):
 
             #address를 회원가입 정보가 아닌 다른 정보로 입력한 경우, 그 값을 적용
             if(qrcode.address == 'none'):
