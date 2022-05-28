@@ -12,7 +12,7 @@ class QRcode(models.Model):
     qr_url = models.TextField(max_length=255)
     text = models.TextField(null = True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
-    qr_img = models.ImageField(upload_to = "qrcode/images", null = True)
+    qr_img = models.TextField(null=True)
     title = models.CharField(max_length=20,null=False)
     address = models.CharField(max_length=255)
     PhoneNumber = PhoneNumberField(null = True,blank = False)
