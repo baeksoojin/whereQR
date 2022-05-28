@@ -63,6 +63,7 @@ class QRsaveView(APIView):
         qrcode =  models.QRcode.objects.get(key = request.data['key'])
         # qrcode를 scan하면 key가 읽히고 qrsave api를 사용하여 key를 가지고 qrcode를 찾아서 데이터를 수정 후 저장.
         
+        qrcode.is_null = False
         # 사용자가 정해지게 됨.
         qrcode.text = request.data['text']
         qrcode.title = request.data['title']
