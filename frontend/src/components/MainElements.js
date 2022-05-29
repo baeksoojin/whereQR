@@ -10,7 +10,7 @@ export const Title = styled.p`
 
 export const Div = styled.div`
     text-align: center;
-    height: 700px;
+    height: 800px;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1000px) / 2);

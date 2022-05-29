@@ -33,12 +33,12 @@ export const Div2 = styled.div`
 
 export const Div3 = styled.div`
     
-    width: 60%;
-    height: 50%;
-    padding: 50px 15px;
+    width: 70%;
+    height: 670px;
+    padding: 15px 15px;
     border-radius: 10px;
     background: white;
-
+    text-align : center;
 `;
 
 
@@ -97,7 +97,7 @@ export const Button = styled.button`
     display: inline-block;
     z-index: 10;
     margin-left : 5%;
-    margin-top: 10%;
+    margin-top: 3%;
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -183,4 +183,9 @@ export const Table = styled.table`
     text-align :center;
     justify-content: space-between;
     z-index: 10;
-`
+`;
+
+export const Image = styled.img`
+    width : 250px;
+    height : 250px;
+`;

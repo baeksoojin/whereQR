@@ -43,7 +43,9 @@ const SaveQR = () => {
         if(localStorage.getItem('token')){//로그인을 안 했다면, 로그인이 필요한 페이지라고 경고.
             let token = localStorage.getItem('token');
             axiosInstance.defaults.headers['Authorization'] = "Token " + token;
-            axiosInstance.post('saveQR/',data); 
+            axiosInstance.post('saveQR/',data).then(()=>{
+                navigate(`/UserQr`);
+            })
         }
         else{
             alert('login필요');
