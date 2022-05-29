@@ -128,9 +128,10 @@ class QRdataView(APIView):
             #PhoneNumber를 회원가입 정보가 아닌 다른 정보로 입력한 경우, 그 값을 적용
             if(qrcode.PhoneNumber):
                 print("here")
-                phonenumber = str(qrcode.profile.PhoneNumber)
-            else: 
                 phonenumber = str(qrcode.PhoneNumber)
+                
+            else: 
+                phonenumber = str(qrcode.profile.PhoneNumber)
                 print("here2")
             data = {
             "is_null" : is_null,
