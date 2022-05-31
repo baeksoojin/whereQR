@@ -42,6 +42,7 @@ const Navbar = () => {
         axiosInstance.post('logout/').then(()=>{
             console.log('logout을 진행');
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             axiosInstance.defaults.headers['Authorization'] = null;
         });
         

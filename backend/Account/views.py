@@ -50,7 +50,7 @@ class DataView(APIView):
             'auth': str(request.auth),  # None
         }
         print(content)
-        return Response({"user": str(request.user)})
+        return Response(content)
 
 class LogoutView(APIView):
     authentication_classes = [TokenAuthentication]
