@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from . import models
-from Account.models import Profile
+from Account.models import Profile, User
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -118,6 +118,13 @@ class QRdataView(APIView):
 
         if(qrcode.profile):
 
+            print(qrcode.profile.id)
+            profile = Profile.objects.get(id = qrcode.profile.id)
+            print(profile.user_id)
+            user = User.objects.get(id = profile.user_id)
+            print(user.email)
+            email = user.email
+
             #address를 회원가입 정보가 아닌 다른 정보로 입력한 경우, 그 값을 적용
             if(qrcode.address == 'none'):
                 address = qrcode.profile.address
@@ -139,7 +146,8 @@ class QRdataView(APIView):
             "memo" : memo,
             "address" : address,
             "phonenumber" : phonenumber,  
-            "image" : image}
+            "image" : image,
+            "user" : email, }
         else:
             data = {
             "is_null" : is_null,

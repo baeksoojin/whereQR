@@ -14,6 +14,7 @@ const Detail = () => {
     const [phonenum, setPhonenum] = useState('No result');
     const [title, setTitle] = useState('No result');
     const [image, setImage] = useState('No result');
+    const [IsUser,setIsUser] = useState(false);
 
     const saveQR = (key) => {
         navigate(`/SaveQR/${key}`);
@@ -31,6 +32,10 @@ const Detail = () => {
                 setMemo(response.data['memo']);
                 setPhonenum(response.data['phonenumber']);
                 setImage(response.data['image']);
+                if(response.data['user'] = localStorage.getItem('user')){
+                    setIsUser(true);
+                }
+                
             }
             else{
                 console.log("등록된 정보가 없습니다.");
@@ -66,8 +71,7 @@ const Detail = () => {
                         <TD>{phonenum}</TD>
                     </tr>
                 </Table>
-                
-                <Button className = "button" type="primary" onClick={Modify}>수정하기</Button>
+                {IsUser && <div><Button className = "button" type="primary" onClick={Modify}>수정하기</Button></div>}
             </Div3>
             
             

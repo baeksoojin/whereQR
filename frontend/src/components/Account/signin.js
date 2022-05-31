@@ -41,7 +41,7 @@ const Signin = () => {
             localStorage.setItem('token',token); 
             console.log(token);
             console.log(res.data);
-            // navigate(`/`);
+            navigate(`/`);
 
         }).then(()=>{
             axiosInstance.get('data/').then((res)=>{
