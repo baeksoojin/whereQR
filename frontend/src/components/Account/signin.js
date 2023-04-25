@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {Div2, Label , SDiv, Input, Button} from "./AccountElements.js";
 axios.defaults.withCredentials = true;
 
-const BaseURL = 'http://127.0.0.1:8000/user/';
+const BaseURL = 'http://127.0.0.1:8080/user/';
 
 const axiosInstance= axios.create({
 	baseURL: BaseURL,

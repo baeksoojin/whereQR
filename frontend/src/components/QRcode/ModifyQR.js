@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {QDiv, Label , Div2, Input, Button,P,QLink} from "./QRcodeElements";
 
-const BaseURL = 'http://127.0.0.1:8000/qrcode/';
+const BaseURL = 'http://127.0.0.1:8080/qrcode/';
 
 const axiosInstance= axios.create({
 	baseURL: BaseURL,
@@ -41,7 +41,7 @@ const ModifyQR = () => {
     };
 
     useEffect(()=>{ 
-        axios.get('http://127.0.0.1:8000/qrcode/data/',{params: {"key" : key}})
+        axios.get('http://127.0.0.1:8080/qrcode/data/',{params: {"key" : key}})
         .then((response) => {
 
             console.log(response);

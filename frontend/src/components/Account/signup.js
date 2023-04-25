@@ -38,7 +38,7 @@ const Signup = () => {
             phonenumber: phonenum,
         };
 
-        axios.post('http://127.0.0.1:8000/user/signup/',user_data).then(
+        axios.post('http://127.0.0.1:8080/user/signup/',user_data).then(
             navigate(`/Signin`)
         );
     }

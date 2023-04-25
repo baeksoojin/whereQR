@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from 'react-router-dom';
 import {QDiv , Div, A,Title,TD2} from "./QRcodeElements";
 
-const BaseURL = 'http://127.0.0.1:8000/qrcode/';
+const BaseURL = 'http://127.0.0.1:8080/qrcode/';
 
 const axiosInstance= axios.create({
 	baseURL: BaseURL,
