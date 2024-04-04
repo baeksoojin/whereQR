@@ -1,5 +1,10 @@
 # whereQR
 Description : Web service for stickers for dealing with loss
+### Java, Spring, React를 활용해 전면 수정.
+
+- Backend :  https://github.com/baek-park/whereQR_Spring_version
+- Frontend : https://github.com/baek-park/whereQR-front
+
 
 ## 1. 실행방법
 
